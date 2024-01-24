@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+ [SerializeField]  private int goals;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Ball ballScript))
         {
             ballScript.Reset();
+            goals++;
         }
     }
 }
