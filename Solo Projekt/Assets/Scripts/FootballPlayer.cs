@@ -7,6 +7,10 @@ public class FootballPlayer : MonoBehaviour
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform gruondCheck;
     private Rigidbody2D rb;
+    public void Run(float direction)
+    {
+        rb.velocity = new Vector2(direction * playerSpeed, rb.velocity.y);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,6 @@ public class FootballPlayer : MonoBehaviour
         {
             ySpeed = 5;
         }
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal")*playerSpeed, ySpeed);   
+        Run(Input.GetAxis("Horizontal"));
     }
 }
