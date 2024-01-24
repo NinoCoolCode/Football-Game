@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.TryGetComponent(out Ball ballScript))
         {
-            print("GOAL!!!");
+            ballScript.Reset();
         }
     }
 }
