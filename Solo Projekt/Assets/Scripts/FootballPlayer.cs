@@ -12,6 +12,17 @@ public class FootballPlayer : MonoBehaviour
         rb.velocity = new Vector2(direction * playerSpeed, rb.velocity.y);
     }
     // Start is called before the first frame update
+    public void Jump()
+    {
+       float ySpeed = rb.velocity.y;
+        RaycastHit2D hit = Physics2D.Raycast(gruondCheck.position, Vector2.down, 0.1f);
+
+        if (  hit.collider != null)
+        {
+            ySpeed = 5;
+        }
+        rb.velocity = new Vector2( rb.velocity.x,ySpeed);
+    }  
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  
@@ -20,13 +31,8 @@ public class FootballPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float ySpeed = rb.velocity.y;
-       RaycastHit2D hit= Physics2D.Raycast(gruondCheck.position,Vector2.down,0.1f);
         
-        if (Input.GetKeyDown(KeyCode.Space)&&hit.collider!=null)
-        {
-            ySpeed = 5;
-        }
-        Run(Input.GetAxis("Horizontal"));
+       
+     
     }
 }
