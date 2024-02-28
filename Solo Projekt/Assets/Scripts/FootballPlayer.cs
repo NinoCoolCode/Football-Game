@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FootballPlayer : MonoBehaviour
 {
-    [SerializeField] private int playerSpeed = 5;
+    [SerializeField]private float jumpSpeed = 7;
+   [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform gruondCheck;
     private Rigidbody2D rb;
     private Vector3 startPosition;
@@ -27,10 +28,18 @@ public class FootballPlayer : MonoBehaviour
 
         if (  hit.collider != null)
         {
-            ySpeed = 5;
+            ySpeed = jumpSpeed;
         }
         rb.velocity = new Vector2( rb.velocity.x,ySpeed);
-    }  
+    }
+    public void InteruptJump()
+    {
+        if (rb.velocity.y>0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, 0);
+        }
+       
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

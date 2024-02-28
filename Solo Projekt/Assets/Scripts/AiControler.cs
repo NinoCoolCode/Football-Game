@@ -14,7 +14,7 @@ public class AiControler : MonoBehaviour
     void Update()
     {
         Vector2 distanceToBall = Ball.Instance.transform.position - transform.position;
-        if (distanceToBall.x>0)
+        if (distanceToBall.x>-0.6f)
         {
             GetComponent<FootballPlayer>().Run(1);
 
@@ -31,7 +31,8 @@ public class AiControler : MonoBehaviour
         }
         else
         {
-          //  GetComponent<FootballPlayer>().Run(-1);
+            GetComponent<FootballPlayer>().InteruptJump();
+
         }
 
     }

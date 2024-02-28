@@ -19,5 +19,9 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<FootballPlayer>(). Jump();
         }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            GetComponent<FootballPlayer>().InteruptJump();
+        }
     }
 }
