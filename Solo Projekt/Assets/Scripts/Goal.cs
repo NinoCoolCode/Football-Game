@@ -11,6 +11,12 @@ public class Goal : MonoBehaviour
         {
             ballScript.Reset();
             goals++;
+
+            foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())
+            {
+                player.Reset();
+            }
+           
         }
     }
 }

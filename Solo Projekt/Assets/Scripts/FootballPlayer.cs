@@ -7,6 +7,14 @@ public class FootballPlayer : MonoBehaviour
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform gruondCheck;
     private Rigidbody2D rb;
+    private Vector3 startPosition;
+
+    public void Reset()
+    {
+        transform.position = startPosition;
+        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+        GetComponent<Rigidbody2D>().angularVelocity = 0;
+    }
     public void Run(float direction)
     {
         rb.velocity = new Vector2(direction * playerSpeed, rb.velocity.y);
@@ -25,8 +33,10 @@ public class FootballPlayer : MonoBehaviour
     }  
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  
+        rb = GetComponent<Rigidbody2D>();
+        startPosition = transform.position;
     }
+    
 
     // Update is called once per frame
     void Update()
