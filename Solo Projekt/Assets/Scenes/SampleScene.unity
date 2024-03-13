@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb17f5627291434ebf91abae1435dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 1926029428}
   menu: {fileID: 1068767682}
   aiControler: {fileID: 1926029427}
 --- !u!4 &77633090
@@ -622,7 +623,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 326728822}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 77633089}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Set2Player
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &326728822
 MonoBehaviour:
   m_ObjectHideFlags: 0
