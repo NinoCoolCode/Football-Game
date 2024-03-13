@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private int playerNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +15,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<FootballPlayer>().Run(Input.GetAxis("Horizontal"));
-        if (Input.GetKeyDown(KeyCode.Space))
+        GetComponent<FootballPlayer>().Run(Input.GetAxis("Horizontal"+playerNumber));
+        if (Input.GetButtonDown("Jump"+playerNumber))
         {
             GetComponent<FootballPlayer>(). Jump();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetButtonUp("Jump"+ playerNumber))
         {
             GetComponent<FootballPlayer>().InteruptJump();
         }
