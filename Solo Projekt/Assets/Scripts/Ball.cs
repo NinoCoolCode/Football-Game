@@ -5,6 +5,8 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 
 {
+    [SerializeField] private  Sprite roboBall;
+    [SerializeField] private int controlledByPlayerNumber;
     public static Ball Instance;
     private Vector3 startPosition;
 
@@ -22,11 +24,15 @@ public class Ball : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+        GetComponent<SpriteRenderer>().sprite = roboBall;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (controlledByPlayerNumber == 1 || controlledByPlayerNumber == 2)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(Input.GetAxis("Horizontal" + controlledByPlayerNumber), Input.GetAxis("Vertical" + controlledByPlayerNumber));
+        }
     }
 }
