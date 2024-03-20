@@ -7,6 +7,7 @@ public class FootballPlayer : MonoBehaviour
     [SerializeField]private float jumpSpeed = 7;
    [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform gruondCheck;
+ 
     private Rigidbody2D rb;
     private Vector3 startPosition;
 
