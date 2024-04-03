@@ -4,9 +4,8 @@ using UnityEngine;
 
 public enum BallType
 {
-normal,
-robo
-
+    normal,
+    robo
 }
 
 public class Ball : MonoBehaviour
@@ -17,13 +16,29 @@ public class Ball : MonoBehaviour
 
     public static Ball Instance;
     private Vector3 startPosition;
+    private static List<Ball> activeBalls = new List<Ball>();
+
 
     public void Reset()
     {
-        transform.position = startPosition;
-        ChangeBall(BallType.normal);
-        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-        GetComponent<Rigidbody2D>().angularVelocity = 0;
+        for (int i = activeBalls.Count-1; i >= 0; i--)
+        {
+            if (Instance != this)
+            {
+                activeBalls.Remove(this);
+                Destroy(gameObject);
+            }
+            transform.position = startPosition;
+            ChangeBall(BallType.normal);
+            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            GetComponent<Rigidbody2D>().angularVelocity = 0;
+
+        }
+        
+    }
+    public void Duplicate()
+    {
+        Instantiate(gameObject);
     }
     public void SetVelocity(Vector2 direction)
     {
@@ -44,9 +59,15 @@ public class Ball : MonoBehaviour
                 break;
         }
     }
+
     private void Awake()
     {
-        Instance = this;
+        activeBalls.Add(this);   
+        if (Instance == null)
+        {
+            Instance = this;
+
+        }
     }
     // Start is called before the first frame update
     void Start()

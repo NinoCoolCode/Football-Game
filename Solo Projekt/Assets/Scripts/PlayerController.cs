@@ -8,11 +8,6 @@ public class PlayerController : FootballPlayer
     [SerializeField] private int playerNumber = 1;
     [SerializeField] private Ball ball;
 
-    public void ActivatePowerUp()
-    {
-        hasRoboBall = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
