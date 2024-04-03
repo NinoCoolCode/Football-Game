@@ -5,9 +5,11 @@ using UnityEngine;
 public class FootballPlayer : MonoBehaviour
 {
     [SerializeField]private float jumpSpeed = 7;
-   [SerializeField] private int playerSpeed = 5;
-    [SerializeField] private Transform gruondCheck;
- 
+    [SerializeField] private int playerSpeed = 5;
+    [SerializeField] private Transform groundCheck;
+
+    protected bool hasRoboBall;
+
     private Rigidbody2D rb;
     private Vector3 startPosition;
 
@@ -17,15 +19,16 @@ public class FootballPlayer : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         GetComponent<Rigidbody2D>().angularVelocity = 0;
     }
-    public void Run(float direction)
+
+    protected void Run(float direction)
     {
         rb.velocity = new Vector2(direction * playerSpeed, rb.velocity.y);
     }
-    // Start is called before the first frame update
-    public void Jump()
+
+    protected void Jump()
     {
        float ySpeed = rb.velocity.y;
-        RaycastHit2D hit = Physics2D.Raycast(gruondCheck.position, Vector2.down, 0.1f);
+        RaycastHit2D hit = Physics2D.Raycast(groundCheck.position, Vector2.down, 0.1f);
 
         if (  hit.collider != null)
         {
@@ -33,26 +36,18 @@ public class FootballPlayer : MonoBehaviour
         }
         rb.velocity = new Vector2( rb.velocity.x,ySpeed);
     }
-    public void InteruptJump()
+
+    protected void InterruptJump()
     {
         if (rb.velocity.y>0)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
         }
-       
     }
-    void Start()
+
+    protected void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
-    }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-       
-     
     }
 }

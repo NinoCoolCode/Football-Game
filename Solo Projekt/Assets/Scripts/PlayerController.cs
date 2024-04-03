@@ -3,25 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : FootballPlayer
 {
     [SerializeField] private int playerNumber = 1;
     [SerializeField] private Ball ball;
-     private bool hasRoboBall;
+
     public void ActivatePowerUp()
     {
         hasRoboBall = true;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<FootballPlayer>().Run(Input.GetAxis("Horizontal" + playerNumber));
+        Run(Input.GetAxis("Horizontal" + playerNumber));
         
         if (hasRoboBall)
         {
@@ -29,11 +24,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetButtonDown("Jump" + playerNumber))
         {
-            GetComponent<FootballPlayer>().Jump();
+            Jump();
         }
         else if (Input.GetButtonUp("Jump" + playerNumber))
         {
-            GetComponent<FootballPlayer>().InteruptJump();
+            InterruptJump();
         }
     }
 }
