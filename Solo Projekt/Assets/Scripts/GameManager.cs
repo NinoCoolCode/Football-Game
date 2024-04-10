@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject startMenu;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private GameObject menu;
     [SerializeField] private AiControler aiControler;
     private void Awake()
     {
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public void Set1Player()
     {
         aiControler.enabled = true;
-        menu.SetActive(false);
+        startMenu.SetActive(false);
         Time.timeScale = 1;
 
     }
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     {
         playerController.enabled = true;
 
-        menu.SetActive(false);
+        startMenu.SetActive(false);
         Time.timeScale = 1;
     }
 
