@@ -9,7 +9,7 @@ public class Goal : MonoBehaviour
     {
         if (collision.TryGetComponent(out Ball ballScript))
         {
-            ballScript.Reset();
+            Ball.Reset();
             goals++;
 
             foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())

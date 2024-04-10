@@ -19,19 +19,26 @@ public class Ball : MonoBehaviour
     private static List<Ball> activeBalls = new List<Ball>();
 
 
-    public void Reset()
+    public static void Reset()
     {
         for (int i = activeBalls.Count-1; i >= 0; i--)
         {
-            if (Instance != this)
+            Ball currentBall = activeBalls[i];
+            if (Instance == currentBall)
             {
-                activeBalls.Remove(this);
-                Destroy(gameObject);
+                currentBall.transform.position = currentBall.startPosition;
+                currentBall.ChangeBall(BallType.normal);
+
+                Rigidbody2D currentRb = currentBall.GetComponent<Rigidbody2D>();
+                currentRb.velocity = new Vector3(0, 0, 0);
+                currentRb.angularVelocity = 0;
             }
-            transform.position = startPosition;
-            ChangeBall(BallType.normal);
-            GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
-            GetComponent<Rigidbody2D>().angularVelocity = 0;
+            else
+            {
+                activeBalls.Remove(currentBall);
+                Destroy(currentBall.gameObject);
+            }
+
 
         }
         
@@ -40,6 +47,7 @@ public class Ball : MonoBehaviour
     {
         Instantiate(gameObject);
     }
+
     public void SetVelocity(Vector2 direction)
     {
         GetComponent<Rigidbody2D>().velocity = direction;
@@ -66,7 +74,6 @@ public class Ball : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-
         }
     }
     // Start is called before the first frame update
