@@ -8,8 +8,8 @@ public enum PowerUpType
     RoboBall,
     MultiBall,
     FreezeEnemy
-
 }
+
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] private PowerUpType powerUpType;
