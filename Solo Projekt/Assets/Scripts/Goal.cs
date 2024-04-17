@@ -7,18 +7,26 @@ public class Goal : MonoBehaviour
 {
    private int goals;
     [SerializeField] private TMP_Text goalText;
+    [SerializeField] private GameObject goalImage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Ball ballScript))
         {
-            Ball.Reset();
+           
             goals++;
             goalText.text = goals.ToString();
+            goalImage.SetActive(true);
 
-            foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())
-            {
-                player.Reset();
-            }
+            Invoke(nameof(Reset),1);
         }           
+    }
+    private void Reset()
+    {
+        Ball.Reset();
+        foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())
+        {
+            player.Reset();
+        }
+        goalImage.SetActive(false);
     }
 }

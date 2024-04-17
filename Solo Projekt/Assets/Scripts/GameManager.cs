@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         UpdateTimer();
         InvokeRepeating(nameof(CountDown),1,1);
+        startMenu.SetActive(true);
 
     }
     public void Set1Player()
