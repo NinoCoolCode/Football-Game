@@ -28,5 +28,6 @@ public class Goal : MonoBehaviour
             player.Reset();
         }
         goalImage.SetActive(false);
+        GetComponentInChildren<PowerUpSpawner>().Spawn();
     }
 }
