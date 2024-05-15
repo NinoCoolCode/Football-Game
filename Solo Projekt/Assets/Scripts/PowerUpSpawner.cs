@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject powerUp;
+    [SerializeField] private GameObject[] powerUps;
     
    public void Spawn()
     {
-        Instantiate(powerUp,transform.position,transform.rotation);
+        Instantiate(powerUps[Random.Range(0,powerUps.Length)],transform.position,transform.rotation);
        
     }
 }
