@@ -417,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 7
+  enemy: {fileID: 1926029428}
   playerSpeed: 5
   groundCheck: {fileID: 197724238}
   playerNumber: 1
@@ -434,6 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 7
+  enemy: {fileID: 1926029428}
   playerSpeed: 5
   groundCheck: {fileID: 197724238}
 --- !u!1 &77633088
@@ -2748,8 +2750,8 @@ GameObject:
   - component: {fileID: 1926029425}
   - component: {fileID: 1926029424}
   - component: {fileID: 1926029423}
-  - component: {fileID: 1926029427}
   - component: {fileID: 1926029428}
+  - component: {fileID: 1926029427}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2900,6 +2902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 7
+  enemy: {fileID: 64254158}
   playerSpeed: 5
   groundCheck: {fileID: 1749801870}
 --- !u!114 &1926029428
@@ -2915,6 +2918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSpeed: 7
+  enemy: {fileID: 64254158}
   playerSpeed: 5
   groundCheck: {fileID: 1749801870}
   playerNumber: 2

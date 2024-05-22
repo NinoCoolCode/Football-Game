@@ -5,6 +5,7 @@ using UnityEngine;
 public class FootballPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed = 7;
+    [SerializeField] private FootballPlayer enemy;
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform groundCheck;
 
@@ -13,7 +14,10 @@ public class FootballPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 startPosition;
-
+    public void Freeze()
+    {
+        canMove = false;
+    }
     public void ActivatePowerUp(PowerUpType powerUpType)
     {
 
@@ -22,8 +26,8 @@ public class FootballPlayer : MonoBehaviour
             case PowerUpType.RoboBall:
                 hasRoboBall = true;
                 break;
-            case PowerUpType.FreezeEnemy:
-                canMove = false;
+            case PowerUpType.Freeze:
+                enemy.Freeze();
                 break;
             default:
                 break;
