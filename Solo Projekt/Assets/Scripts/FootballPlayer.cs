@@ -8,7 +8,7 @@ public class FootballPlayer : MonoBehaviour
     [SerializeField] private FootballPlayer enemy;
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform groundCheck;
-
+    [SerializeField] private GameObject freezeImage;
     protected bool hasRoboBall;
     protected bool canMove = true;
 
@@ -16,7 +16,12 @@ public class FootballPlayer : MonoBehaviour
     private Vector3 startPosition;
     public void Freeze()
     {
+        CancelInvoke(nameof(Unfreeze));
         canMove = false;
+        Invoke(nameof(Unfreeze),5);
+        freezeImage.SetActive(true);
+
+
     }
     public void ActivatePowerUp(PowerUpType powerUpType)
     {
@@ -36,6 +41,7 @@ public class FootballPlayer : MonoBehaviour
 
     public void Reset()
     {
+        Unfreeze();
         transform.position = startPosition;
         GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         GetComponent<Rigidbody2D>().angularVelocity = 0;
@@ -81,5 +87,11 @@ public class FootballPlayer : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
+    }
+    private void Unfreeze()
+    {
+        canMove = true;
+       
+        freezeImage.SetActive(false);
     }
 }
