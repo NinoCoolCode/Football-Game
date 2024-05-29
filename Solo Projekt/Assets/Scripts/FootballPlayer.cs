@@ -27,6 +27,9 @@ public class FootballPlayer : MonoBehaviour
         {
             case PowerUpType.RoboBall:
                 hasRoboBall = true;
+                CancelInvoke(nameof(StopRoboBall));
+                Invoke(nameof(StopRoboBall), 5);
+               
                 break;
             case PowerUpType.Freeze:
                 enemy.Freeze();
@@ -34,6 +37,13 @@ public class FootballPlayer : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void StopRoboBall()
+    {
+        hasRoboBall = false;
+        Ball.Instance.ChangeBall(BallType.normal);
+
     }
 
     public void Reset()

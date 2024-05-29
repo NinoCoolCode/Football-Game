@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roboBall: {fileID: 21300000, guid: 424a537cccfa041d39e7fb67cdd8048d, type: 3}
-  football: {fileID: 0}
+  football: {fileID: 21300000, guid: 671f62d27de4a4cf89d3040758e1a5f1, type: 3}
 --- !u!1 &698015670
 GameObject:
   m_ObjectHideFlags: 0

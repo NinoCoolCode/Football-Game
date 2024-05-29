@@ -69,10 +69,12 @@ public class Ball : MonoBehaviour
 
     private void Awake()
     {
-        activeBalls.Add(this);   
+        activeBalls.Add(this);
+        ChangeBall(BallType.normal);
         if (Instance == null)
         {
             Instance = this;
+           
         }
     }
 
