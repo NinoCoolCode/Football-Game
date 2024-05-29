@@ -100,6 +100,7 @@ public class FootballPlayer : MonoBehaviour
         {
             print(gameObject.name + this.ToString());
             if (!player.enabled) Destroy(player);
+
         }
     }
     

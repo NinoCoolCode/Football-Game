@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private Sprite roboBall;
     [SerializeField] private Sprite football;
+    [SerializeField] private GameObject fire;
 
     public static Ball Instance;
     private Vector3 startPosition;
@@ -65,6 +66,10 @@ public class Ball : MonoBehaviour
                 GetComponent<SpriteRenderer>().sprite = roboBall;
                 break;
         }
+    }
+    public void FireBall()
+    {
+        fire.SetActive(true);
     }
 
     private void Awake()

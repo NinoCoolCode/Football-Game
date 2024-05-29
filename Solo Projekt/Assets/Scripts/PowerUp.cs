@@ -4,7 +4,8 @@ public enum PowerUpType
 {
     RoboBall,
     MultiBall,
-    Freeze
+    Freeze,
+    FireBall
 }
 
 public class PowerUp : MonoBehaviour
@@ -25,8 +26,12 @@ public class PowerUp : MonoBehaviour
                 case PowerUpType.MultiBall:
                     Ball.Instance.Duplicate();
                     break;
+                case PowerUpType.FireBall:
+                    Ball.Instance.FireBall();
+                    break;
                 default:
                     break;
+
             }
         }
     }
