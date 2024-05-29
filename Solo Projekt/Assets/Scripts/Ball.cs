@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +8,9 @@ public enum BallType
 }
 
 public class Ball : MonoBehaviour
-
 {
     [SerializeField] private Sprite roboBall;
-   [SerializeField] private Sprite football;
+    [SerializeField] private Sprite football;
 
     public static Ball Instance;
     private Vector3 startPosition;
@@ -41,8 +39,8 @@ public class Ball : MonoBehaviour
 
 
         }
-        
     }
+
     public void Duplicate()
     {
         Instantiate(gameObject);
@@ -54,6 +52,7 @@ public class Ball : MonoBehaviour
         ChangeBall(BallType.robo);
         transform.rotation = Quaternion.identity;
     }
+
     public void ChangeBall(BallType ballType)
     {
         switch (ballType)
@@ -76,14 +75,10 @@ public class Ball : MonoBehaviour
             Instance = this;
         }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
         startPosition = transform.position;
-       football = GetComponent<SpriteRenderer>().sprite ;
-
+        football = GetComponent<SpriteRenderer>().sprite ;
     }
-
-    // Update is called once per frame
-    
 }

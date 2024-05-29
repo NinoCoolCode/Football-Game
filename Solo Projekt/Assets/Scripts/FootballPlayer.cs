@@ -23,7 +23,6 @@ public class FootballPlayer : MonoBehaviour
 
     public void ActivatePowerUp(PowerUpType powerUpType)
     {
-
         switch (powerUpType)
         {
             case PowerUpType.RoboBall:
