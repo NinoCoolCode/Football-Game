@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 64254158}
   - component: {fileID: 64254159}
   m_Layer: 0
-  m_Name: Player
+  m_Name: LeftPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412,7 +412,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64254152}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de175c5e9540c4afebb1af2e240c30fb, type: 3}
   m_Name: 
@@ -471,8 +471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: {fileID: 270473124}
-  playerController: {fileID: 1926029428}
-  aiControler: {fileID: 1926029427}
+  leftPlayer: {fileID: 64254158}
+  rightPlayer: {fileID: 1926029428}
   timerText: {fileID: 1744290005}
   timer: 120
 --- !u!4 &77633090
@@ -2924,7 +2924,7 @@ GameObject:
   - component: {fileID: 1926029428}
   - component: {fileID: 1926029427}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: RightPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,10 +6,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject startMenu;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private AiControler aiControler;
+    [SerializeField] private PlayerController leftPlayer;
+    [SerializeField] private PlayerController rightPlayer;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private int timer=120;
+    [SerializeField] private int timer = 120;
+
     private void Awake()
     {
         Time.timeScale = 0;
@@ -18,17 +19,20 @@ public class GameManager : MonoBehaviour
         startMenu.SetActive(true);
 
     }
+
     public void Set1Player()
     {
-        aiControler.enabled = true;
+        leftPlayer.GetComponent<PlayerController>().enabled = true;
+        rightPlayer.GetComponent<AiControler>().enabled = true;
+
         startMenu.SetActive(false);
         Time.timeScale = 1;
-
     }
 
     public void Set2Player()
     {
-        playerController.enabled = true;
+        leftPlayer.GetComponent<PlayerController>().enabled = true;
+        rightPlayer.GetComponent<PlayerController>().enabled = true;
 
         startMenu.SetActive(false);
         Time.timeScale = 1;

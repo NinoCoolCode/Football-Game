@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FootballPlayer : MonoBehaviour
@@ -14,15 +12,15 @@ public class FootballPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
     private Vector3 startPosition;
+
     public void Freeze()
     {
         CancelInvoke(nameof(Unfreeze));
         canMove = false;
         Invoke(nameof(Unfreeze),5);
         freezeImage.SetActive(true);
-
-
     }
+
     public void ActivatePowerUp(PowerUpType powerUpType)
     {
 
@@ -56,9 +54,6 @@ public class FootballPlayer : MonoBehaviour
         
     }
 
-      
-    
-
     protected void Jump()
     {
         if (canMove)
@@ -83,11 +78,22 @@ public class FootballPlayer : MonoBehaviour
         }
     }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         startPosition = transform.position;
     }
+
+    protected virtual void Start()
+    {
+        // Remove the inactive other script
+        foreach (FootballPlayer player in GetComponents<FootballPlayer>())
+        {
+            print(gameObject.name + this.ToString());
+            if (!player.enabled) Destroy(player);
+        }
+    }
+    
     private void Unfreeze()
     {
         canMove = true;
