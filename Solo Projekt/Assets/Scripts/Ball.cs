@@ -4,7 +4,8 @@ using UnityEngine;
 public enum BallType
 {
     normal,
-    robo
+    robo,
+    fireBall
 }
 
 public class Ball : MonoBehaviour
@@ -60,17 +61,20 @@ public class Ball : MonoBehaviour
         {
             case BallType.normal:
                 GetComponent<SpriteRenderer>().sprite = football;
+                fire.SetActive(false);
                 break;
 
             case BallType.robo:
                 GetComponent<SpriteRenderer>().sprite = roboBall;
                 break;
+            case BallType.fireBall:
+                fire.SetActive(true);
+
+                break;
+
         }
     }
-    public void FireBall()
-    {
-        fire.SetActive(true);
-    }
+    
 
     private void Awake()
     {
@@ -87,5 +91,9 @@ public class Ball : MonoBehaviour
     {
         startPosition = transform.position;
         football = GetComponent<SpriteRenderer>().sprite ;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        fire.SetActive(false);
     }
 }

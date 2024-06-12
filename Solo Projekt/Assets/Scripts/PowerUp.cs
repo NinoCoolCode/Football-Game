@@ -27,7 +27,7 @@ public class PowerUp : MonoBehaviour
                     Ball.Instance.Duplicate();
                     break;
                 case PowerUpType.FireBall:
-                    Ball.Instance.FireBall();
+                    Ball.Instance.ChangeBall(BallType.fireBall);
                     break;
                 default:
                     break;
