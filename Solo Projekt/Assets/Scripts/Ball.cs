@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     public static Ball Instance;
     private Vector3 startPosition;
     private static List<Ball> activeBalls = new List<Ball>();
-
+    private Rigidbody2D rb;
 
     public static void Reset()
     {
@@ -69,17 +69,33 @@ public class Ball : MonoBehaviour
                 break;
             case BallType.fireBall:
                 fire.SetActive(true);
-
                 break;
 
         }
     }
+
+    public void FireBall(Transform target)
+    {
+        rb.velocity = (target.position - transform.position).normalized*20;
+        rb.angularVelocity = 0;
+        ChangeBall(BallType.fireBall);
+        if (rb.velocity.x<0)
+        {
+            transform.rotation = Quaternion.Euler(0,0,180);
+        }
+        else
+        {
+            transform.rotation = Quaternion.identity;
+        }
+    }
+    
     
 
     private void Awake()
     {
         activeBalls.Add(this);
         ChangeBall(BallType.normal);
+        rb = GetComponent<Rigidbody2D>();
         if (Instance == null)
         {
             Instance = this;

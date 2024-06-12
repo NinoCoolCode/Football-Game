@@ -21,14 +21,13 @@ public class PowerUp : MonoBehaviour
             {
                 case PowerUpType.RoboBall:
                 case PowerUpType.Freeze:
+                case PowerUpType.FireBall:
                     player.ActivatePowerUp(powerUpType);
                     break;
                 case PowerUpType.MultiBall:
                     Ball.Instance.Duplicate();
                     break;
-                case PowerUpType.FireBall:
-                    Ball.Instance.ChangeBall(BallType.fireBall);
-                    break;
+                
                 default:
                     break;
 

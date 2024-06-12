@@ -4,6 +4,7 @@ public class FootballPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed = 7;
     [SerializeField] private FootballPlayer enemy;
+    [SerializeField] private Goal enemyGoal;
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private GameObject freezeImage;
@@ -34,8 +35,12 @@ public class FootballPlayer : MonoBehaviour
             case PowerUpType.Freeze:
                 enemy.Freeze();
                 break;
+            case PowerUpType.FireBall:
+                Ball.Instance.FireBall(enemyGoal.transform);
+                break;
             default:
                 break;
+                
         }
     }
 
