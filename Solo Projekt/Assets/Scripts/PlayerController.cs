@@ -8,19 +8,24 @@ public class PlayerController : FootballPlayer
     // Update is called once per frame
     void Update()
     {
-        Run(Input.GetAxis("Horizontal" + playerNumber));
+       
         
         if (hasRoboBall)
         {
-            ball.SetVelocity(new Vector2(Input.GetAxis("Horizontal" + playerNumber), Input.GetAxis("Vertical" + playerNumber)));
+            ball.SetDirection(new Vector2(Input.GetAxis("Horizontal" + playerNumber), Input.GetAxis("Vertical" + playerNumber)));
         }
-        if (Input.GetButtonDown("Jump" + playerNumber))
+        else
         {
-            Jump();
+            Run(Input.GetAxis("Horizontal" + playerNumber));
+            if (Input.GetButtonDown("Jump" + playerNumber))
+            {
+                Jump();
+            }
+            else if (Input.GetButtonUp("Jump" + playerNumber))
+            {
+                InterruptJump();
+            }
         }
-        else if (Input.GetButtonUp("Jump" + playerNumber))
-        {
-            InterruptJump();
-        }
+        
     }
 }

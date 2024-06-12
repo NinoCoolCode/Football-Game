@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController rightPlayer;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private int timer = 120;
+    [SerializeField] private GameObject timesUpUI;
+    [SerializeField] private GameObject gameUI;
+
+
+
 
     private void Awake()
     {
@@ -20,19 +26,22 @@ public class GameManager : MonoBehaviour
 
     public void Set1Player()
     {
-        leftPlayer.GetComponent<PlayerController>().enabled = true;
         rightPlayer.GetComponent<AiControler>().enabled = true;
-
-        startMenu.SetActive(false);
-        Time.timeScale = 1;
+        StartGame();
     }
 
     public void Set2Player()
     {
-        leftPlayer.GetComponent<PlayerController>().enabled = true;
+        
         rightPlayer.GetComponent<PlayerController>().enabled = true;
+        StartGame();
+    }
 
+    private void StartGame()
+    {
+        leftPlayer.GetComponent<PlayerController>().enabled = true;
         startMenu.SetActive(false);
+        gameUI.SetActive(true);
         Time.timeScale = 1;
     }
 
@@ -46,7 +55,23 @@ public class GameManager : MonoBehaviour
 
     private void CountDown()
     {
-        timer--;
-        UpdateTimer();
+       
+        if (timer<=0)
+        {
+            timesUpUI.SetActive(true);
+            Invoke(nameof(Restart),3);
+
+        }
+        else
+        {
+            timer--;
+            UpdateTimer();
+        }
+    }
+
+    private void Restart()
+    {
+        Ball.Instance = null;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

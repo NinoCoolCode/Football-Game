@@ -54,6 +54,7 @@ public class FootballPlayer : MonoBehaviour
     public void Reset()
     {
         Unfreeze();
+        StopRoboBall();
         transform.position = startPosition;
         GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
         GetComponent<Rigidbody2D>().angularVelocity = 0;

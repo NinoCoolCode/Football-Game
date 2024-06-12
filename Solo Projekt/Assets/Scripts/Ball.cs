@@ -38,8 +38,6 @@ public class Ball : MonoBehaviour
                 activeBalls.Remove(currentBall);
                 Destroy(currentBall.gameObject);
             }
-
-
         }
     }
 
@@ -48,9 +46,9 @@ public class Ball : MonoBehaviour
         Instantiate(gameObject);
     }
 
-    public void SetVelocity(Vector2 direction)
+    public void SetDirection(Vector2 direction)
     {
-        GetComponent<Rigidbody2D>().velocity = direction;
+        GetComponent<Rigidbody2D>().velocity = direction.normalized * 5;
         ChangeBall(BallType.robo);
         transform.rotation = Quaternion.identity;
     }
