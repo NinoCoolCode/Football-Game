@@ -430,7 +430,7 @@ MonoBehaviour:
   leftPlayer: {fileID: 64254158}
   rightPlayer: {fileID: 1926029428}
   timerText: {fileID: 1744290005}
-  timer: 10
+  timer: 120
   timesUpUI: {fileID: 740006704}
   gameUI: {fileID: 812121888}
 --- !u!4 &77633090
