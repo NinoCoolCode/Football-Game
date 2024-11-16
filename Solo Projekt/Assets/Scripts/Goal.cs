@@ -23,13 +23,8 @@ public class Goal : MonoBehaviour
 
     private void Reset()
     {
-        Ball.Reset();
+        GameManager.Instance.ResetPositions();
         canScore = true;
-        foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())
-        {
-            print("ONE PLAYER: " + player.gameObject.name);
-            player.Reset();
-        }
         goalImage.SetActive(false);
         GetComponentInChildren<PowerUpSpawner>().Spawn();
     }

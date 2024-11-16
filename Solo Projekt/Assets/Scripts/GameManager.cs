@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     [SerializeField] private GameObject startMenu;
     [SerializeField] private PlayerController leftPlayer;
     [SerializeField] private PlayerController rightPlayer;
@@ -11,18 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int timer = 120;
     [SerializeField] private GameObject timesUpUI;
     [SerializeField] private GameObject gameUI;
-
-
-
-
-    private void Awake()
-    {
-        Time.timeScale = 0;
-        UpdateTimer();
-        InvokeRepeating(nameof(CountDown),1,1);
-        startMenu.SetActive(true);
-
-    }
+    [SerializeField] private AudioSource whistleSound;
 
     public void Set1Player()
     {
@@ -32,9 +22,18 @@ public class GameManager : MonoBehaviour
 
     public void Set2Player()
     {
-        
         rightPlayer.GetComponent<PlayerController>().enabled = true;
         StartGame();
+    }
+
+    public void ResetPositions()
+    {
+        whistleSound.Play();
+        Ball.Reset();
+        foreach (FootballPlayer player in FindObjectsOfType<FootballPlayer>())
+        {
+            player.Reset();
+        }
     }
 
     private void StartGame()
@@ -43,6 +42,7 @@ public class GameManager : MonoBehaviour
         startMenu.SetActive(false);
         gameUI.SetActive(true);
         Time.timeScale = 1;
+        whistleSound.Play();
     }
 
     private void UpdateTimer()
@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
         {
             timesUpUI.SetActive(true);
             Invoke(nameof(Restart),3);
-
         }
         else
         {
@@ -73,5 +72,14 @@ public class GameManager : MonoBehaviour
     {
         Ball.Instance = null;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private void Awake()
+    {
+        Instance = this;
+        Time.timeScale = 0;
+        UpdateTimer();
+        InvokeRepeating(nameof(CountDown), 1, 1);
+        startMenu.SetActive(true);
     }
 }

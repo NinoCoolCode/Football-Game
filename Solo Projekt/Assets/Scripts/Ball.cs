@@ -36,7 +36,7 @@ public class Ball : MonoBehaviour
             else
             {
                 activeBalls.Remove(currentBall);
-                Destroy(currentBall.gameObject);
+                if(currentBall != null) Destroy(currentBall.gameObject); // Not sure why this is null after the scene restart.
             }
         }
     }
@@ -86,18 +86,16 @@ public class Ball : MonoBehaviour
             transform.rotation = Quaternion.identity;
         }
     }
-    
-    
 
     private void Awake()
     {
         activeBalls.Add(this);
         ChangeBall(BallType.normal);
         rb = GetComponent<Rigidbody2D>();
+
         if (Instance == null)
         {
             Instance = this;
-           
         }
     }
 

@@ -104,9 +104,7 @@ public class FootballPlayer : MonoBehaviour
         // Remove the inactive other script
         foreach (FootballPlayer player in GetComponents<FootballPlayer>())
         {
-            print(gameObject.name + this.ToString());
             if (!player.enabled) Destroy(player);
-
         }
     }
     
