@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
                 currentBall.ChangeBall(BallType.normal);
 
                 Rigidbody2D currentRb = currentBall.GetComponent<Rigidbody2D>();
-                currentRb.velocity = new Vector3(0, Random.Range(-1.5f,10.45236f), 0);
+                currentRb.velocity = new Vector3(0, Random.Range(-0.6524875f,5.45236f), 0);
                 currentRb.angularVelocity = 0;
             }
             else
@@ -103,7 +103,7 @@ public class Ball : MonoBehaviour
     {
         startPosition = transform.position;
         football = GetComponent<SpriteRenderer>().sprite ;
-        if(activeBalls.Count<=1) Reset();
+        if(activeBalls.Count<=1) Reset(); // Soll nicht resetten bei dupliziertem Ball
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
