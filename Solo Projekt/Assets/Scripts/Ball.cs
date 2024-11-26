@@ -103,7 +103,7 @@ public class Ball : MonoBehaviour
     {
         startPosition = transform.position;
         football = GetComponent<SpriteRenderer>().sprite ;
-        Reset();
+        if(activeBalls.Count<=1) Reset();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
