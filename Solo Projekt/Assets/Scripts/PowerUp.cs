@@ -13,7 +13,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private PowerUpType powerUpType;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out PlayerController player))
+        if (collision.TryGetComponent(out FootballPlayer player))
         {
             print(player.GetType());
             switch (powerUpType)
