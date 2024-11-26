@@ -15,12 +15,10 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerController player))
         {
-          
-            Destroy(gameObject);
+            print(player.GetType());
             switch (powerUpType)
             {
                 case PowerUpType.RoboBall:
-                case PowerUpType.Freeze:
                 case PowerUpType.FireBall:
                     player.ActivatePowerUp(powerUpType);
                     break;
@@ -30,8 +28,8 @@ public class PowerUp : MonoBehaviour
                 
                 default:
                     break;
-
             }
+            Destroy(gameObject);
         }
     }
 }

@@ -30,7 +30,6 @@ public class FootballPlayer : MonoBehaviour
                 hasRoboBall = true;
                 CancelInvoke(nameof(StopRoboBall));
                 Invoke(nameof(StopRoboBall), 5);
-               
                 break;
             case PowerUpType.Freeze:
                 enemy.Freeze();

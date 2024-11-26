@@ -6,10 +6,9 @@ public class PowerUpSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] powerUps;
     
-   public void Spawn()
-    {
+    public void Spawn()
+    { 
         Instantiate(powerUps[Random.Range(0,powerUps.Length)],transform.position,transform.rotation);
-       
     }
 }
 

@@ -2759,10 +2759,6 @@ PrefabInstance:
       propertyPath: goalImage
       value: 
       objectReference: {fileID: 2068539356}
-    - target: {fileID: 169871303655280876, guid: 5e8f50746e642451195a457587219f27, type: 3}
-      propertyPath: powerUps.Array.data[2]
-      value: 
-      objectReference: {fileID: 4479161700933945502, guid: c11d995d44b7648759d992a02954692c, type: 3}
     - target: {fileID: 4753455928976091358, guid: 5e8f50746e642451195a457587219f27, type: 3}
       propertyPath: m_Name
       value: GoalLeft
