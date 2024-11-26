@@ -30,7 +30,7 @@ public class Ball : MonoBehaviour
                 currentBall.ChangeBall(BallType.normal);
 
                 Rigidbody2D currentRb = currentBall.GetComponent<Rigidbody2D>();
-                currentRb.velocity = new Vector3(0, 0, 0);
+                currentRb.velocity = new Vector3(0, Random.Range(-1.5f,10.45236f), 0);
                 currentRb.angularVelocity = 0;
             }
             else
@@ -103,6 +103,7 @@ public class Ball : MonoBehaviour
     {
         startPosition = transform.position;
         football = GetComponent<SpriteRenderer>().sprite ;
+        Reset();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

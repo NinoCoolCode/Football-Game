@@ -1,9 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FootballPlayer : MonoBehaviour
 {
     [SerializeField] private float jumpSpeed = 7;
-    [SerializeField] private FootballPlayer enemy;
+    [SerializeField] private FootballPlayer[] enemies;
     [SerializeField] private Goal enemyGoal;
     [SerializeField] private int playerSpeed = 5;
     [SerializeField] private Transform groundCheck;
@@ -32,7 +33,15 @@ public class FootballPlayer : MonoBehaviour
                 Invoke(nameof(StopRoboBall), 5);
                 break;
             case PowerUpType.Freeze:
-                enemy.Freeze();
+                foreach (FootballPlayer enemy in enemies)
+                {
+                    if (enemy!=null)
+                    {
+                        enemy.Freeze();
+                    }
+                   
+                }
+                
                 break;
             case PowerUpType.FireBall:
                 Ball.Instance.FireBall(enemyGoal.transform);
